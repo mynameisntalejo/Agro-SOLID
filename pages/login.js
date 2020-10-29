@@ -124,7 +124,7 @@ export default function Login({session, setSession}) {
                            onClose={() => setError(false)}
                            className="text-left"
                     >
-                        <Alert.Heading>Ya se encuentra autenticado</Alert.Heading>
+                        <Alert.Heading>Se encuentra autenticado</Alert.Heading>
                         <Typography gutterBottom variant="body1" component="p">
                             Con el siguiente WebID
                         </Typography>

@@ -4,7 +4,7 @@ import {getDocument} from "../functions/getDocument";
 import {foaf} from "rdf-namespaces";
 import NavigationBar from "../components/navbar"
 
-export default function Index({session, setSession}) {
+export default function Profile({session, setSession}) {
     useEffect(() => {
         getDocument(session.webId).then(
             (document) => {
@@ -15,7 +15,7 @@ export default function Index({session, setSession}) {
     }, []);
 
     return (
-        <BaseLayout pageTitle="Inicio">
+        <BaseLayout pageTitle="Mis datos">
             <NavigationBar/>
         </BaseLayout>
     );

@@ -7,18 +7,24 @@ import {getSession} from "../functions/getSession";
 
 function MyApp({Component, pageProps}) {
     const [session, setSession] = useState(false);
+    const [render, setRender] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
         getSession().then(
             (currentSession) => {
                 currentSession ? setSession(currentSession) : router.push("/login");
+                setRender(true);
             }
         )
     }, []);
 
     return (
-        <Component {...pageProps} session={session} setSession={setSession}/>
+        <>
+            {
+                render && <Component {...pageProps} session={session} setSession={setSession}/>
+            }
+        </>
     );
 }
 
