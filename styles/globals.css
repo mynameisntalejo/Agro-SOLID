@@ -1,3 +1,8 @@
+html, body {
+    height: 100%;
+    background-color: #343a40;
+}
+
 body {
     font-family: "Roboto", serif;
 }
@@ -9,6 +14,7 @@ body {
 
 .nav-link {
     margin: .25rem 0;
+    border: 2px solid var(--primary);
 }
 
 @media (min-width: 992px) {
@@ -20,5 +26,9 @@ body {
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
+    background-color: inherit;
+}
+
+.nav-pills .nav-link.active-page {
     background-color: var(--primary);
 }

@@ -2,6 +2,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Link from "next/link"
 import {useRouter} from "next/router"
+import auth from "solid-auth-client";
+import Typography from "@material-ui/core/Typography";
 
 export default function NavigationBar() {
     const router = useRouter();
@@ -10,7 +12,6 @@ export default function NavigationBar() {
         <Navbar bg="dark"
                 variant="dark"
                 expand="lg"
-                fixed="top"
         >
             <Link href="/">
                 <Navbar.Brand className="btn">
@@ -20,7 +21,11 @@ export default function NavigationBar() {
                          height="50"
                          className="d-inline-block mr-2"
                     />
-                    Agro-SOLID
+                    <Typography variant="h4"
+                                className="font-weight-bold"
+                    >
+                        Agro-SOLID
+                    </Typography>
                 </Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="navigationBar"/>
@@ -30,14 +35,31 @@ export default function NavigationBar() {
                      className="mr-auto"
                 >
                     <Nav.Link href="/"
-                              className={(router.pathname === "/") ? "active" : ""}
+                              className={(router.pathname === "/") ? "active active-page" : ""}
                     >
-                        Inicio
+                        <Typography variant="button"
+                                    className="font-weight-bold"
+                        >
+                            Inicio
+                        </Typography>
                     </Nav.Link>
                     <Nav.Link href="/profile"
-                              className={(router.pathname === "/profile") ? "active" : ""}
+                              className={(router.pathname === "/profile") ? "active active-page" : ""}
                     >
-                        Mis datos
+                        <Typography variant="button"
+                                    className="font-weight-bold"
+                        >
+                            Mis datos
+                        </Typography>
+                    </Nav.Link>
+                    <Nav.Link href="#"
+                              onClick={() => auth.logout().then(() => router.push("/login"))}
+                    >
+                        <Typography variant="button"
+                                    className="font-weight-bold"
+                        >
+                            Salir
+                        </Typography>
                     </Nav.Link>
                 </Nav>
             </Navbar.Collapse>

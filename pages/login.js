@@ -11,6 +11,8 @@ import Modal from "react-bootstrap/Modal";
 import BaseLayout from "../components/base_layout";
 import {getSession} from "../functions/getSession";
 import {useRouter} from "next/router";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
 export default function Login({session, setSession}) {
     const [provider, setProvider] = useState("");
@@ -55,7 +57,9 @@ export default function Login({session, setSession}) {
                             src="/static/images/agro-solid-logo.png"
                         />
                         <Figure.Caption>
-                            <Typography gutterBottom variant="h4" component="h2">
+                            <Typography variant="h4"
+                                        className="font-weight-bold text-white"
+                            >
                                 Agro-SOLID
                             </Typography>
                         </Figure.Caption>
@@ -64,12 +68,22 @@ export default function Login({session, setSession}) {
             </Row>
             <Row className="justify-content-center">
                 <Col className="text-center" xl={6} lg={6} md={6} sm={9} xs={9}>
-                    <Typography gutterBottom variant="h6" component="h2">
+                    <Typography gutterBottom
+                                variant="h6"
+                                className="text-white-50"
+                    >
                         Identificación
                     </Typography>
                     <Form>
                         <Form.Group controlId="identityProviderForm.providerSelect">
-                            <Form.Label>Proveedor de WebID</Form.Label>
+                            <Form.Label>
+                                <Typography gutterBottom
+                                            variant="subtitle1"
+                                            className="text-white"
+                                >
+                                    Proveedor de WebID
+                                </Typography>
+                            </Form.Label>
                             <Form.Control as="select"
                                           value={provider}
                                           onChange={(event) => setProvider(event.target.value)}
@@ -99,7 +113,9 @@ export default function Login({session, setSession}) {
                     <Button variant="contained"
                             onClick={() => setProvider("")}
                     >
-                        Limpiar
+                        <Typography variant="button">
+                            Limpiar
+                        </Typography>
                     </Button>
                 </Col>
                 <Col className="text-center" xl={4} lg={4} md={4} sm={4} xs={4}>
@@ -107,7 +123,9 @@ export default function Login({session, setSession}) {
                             color="primary"
                             onClick={identityProviderFormSubmit}
                     >
-                        Aceptar
+                        <Typography variant="button">
+                            Aceptar
+                        </Typography>
                     </Button>
                 </Col>
             </Row>
@@ -138,7 +156,9 @@ export default function Login({session, setSession}) {
                             color="primary"
                             onClick={() => router.push("/")}
                     >
-                        Aceptar
+                        <Typography variant="button">
+                            Aceptar
+                        </Typography>
                     </Button>
                 </Modal.Footer>
             </Modal>

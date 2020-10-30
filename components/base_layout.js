@@ -14,7 +14,7 @@ export default function BaseLayout({children, pageTitle}) {
                 />
             </Head>
 
-            <Container fluid className="my-5">
+            <Container fluid>
                 {children}
             </Container>
         </div>
