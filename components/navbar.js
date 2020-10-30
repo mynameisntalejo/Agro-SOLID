@@ -32,7 +32,7 @@ export default function NavigationBar() {
             <Navbar.Collapse id="navigationBar">
                 <Nav justify
                      variant="pills"
-                     className="mr-auto"
+                     className="w-100"
                 >
                     <Nav.Link href="/"
                               className={(router.pathname === "/") ? "active active-page" : ""}

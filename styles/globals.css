@@ -32,3 +32,7 @@ body {
 .nav-pills .nav-link.active-page {
     background-color: var(--primary);
 }
+
+.card-header {
+    cursor: pointer;
+}
