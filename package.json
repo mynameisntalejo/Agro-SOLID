@@ -20,5 +20,13 @@
     "react-dom": "16.14.0",
     "solid-auth-client": "^2.5.2",
     "tripledoc": "^4.3.4"
-  }
+  },
+  "browserslist": [
+    "last 3 and_chr versions",
+    "last 3 chrome versions",
+    "last 3 opera versions",
+    "last 3 ios_saf versions",
+    "last 3 safari versions",
+    "last 3 edge versions"
+  ]
 }
