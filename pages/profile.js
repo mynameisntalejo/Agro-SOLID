@@ -13,6 +13,7 @@ import {getProfileData} from "../functions/getProfileData";
 import {editProfileData} from "../functions/editProfileData";
 import {useRouter} from "next/router";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import Row from "react-bootstrap/Row";
 
 export default function Profile({session, setSession}) {
   const [webId, setWebId] = useState("");
@@ -93,89 +94,106 @@ export default function Profile({session, setSession}) {
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="person">
               <Card.Body>
-                <Form>
-                  <Form.Row>
-                    <Form.Group as={Col}
-                                controlId="webId"
-                    >
-                      <Form.Label>
-                        <Typography variant="overline"
-                                    className="font-weight-bold"
-                        >
-                          Web ID
-                        </Typography>
-                      </Form.Label>
-                      <Form.Control plaintext
-                                    readOnly
-                                    defaultValue={webId}
-                      />
-                    </Form.Group>
-                  </Form.Row>
-                  <Form.Row>
-                    <Form.Group as={Col}
-                                controlId="webIdFirstName"
-                    >
-                      <Form.Label>
-                        <Typography variant="overline"
-                                    className="font-weight-bold"
-                        >
-                          Nombre
-                        </Typography>
-                      </Form.Label>
-                      <Form.Control placeholder="Ingresar"
-                                    value={firstName}
-                                    onChange={firstNameOnChange}
-                      />
-                    </Form.Group>
-                  </Form.Row>
-                  <Form.Row>
-                    <Form.Group as={Col}
-                                controlId="webIdLastName"
-                    >
-                      <Form.Label>
-                        <Typography variant="overline"
-                                    className="font-weight-bold"
-                        >
-                          Apellido
-                        </Typography>
-                      </Form.Label>
-                      <Form.Control placeholder="Ingresar"
-                                    value={lastName}
-                                    onChange={lastNameOnChange}
-                      />
-                    </Form.Group>
-                  </Form.Row>
-                  <Form.Row>
-                    <Form.Group as={Col}
-                                controlId="webIdLastName"
-                    >
-                      <Button variant="primary"
-                              block
-                              disabled={disabledSaveProfile}
-                              onClick={submitSaveProfile}
+                {
+                  (webId === "") &&
+                  <Row>
+                    <Col className="text-center">
+                      <Spinner animation="border"
+                               variant="dark"
+                               role="status"
+                               size="lg"
                       >
-                        {
-                          !savingProfile &&
-                          <Typography variant="button"
+                        <span className="sr-only">Cargando</span>
+                      </Spinner>
+                    </Col>
+                  </Row>
+                }
+                {
+                  !(webId === "") &&
+                  <Form>
+                    <Form.Row>
+                      <Form.Group as={Col}
+                                  controlId="webId"
+                      >
+                        <Form.Label>
+                          <Typography variant="overline"
                                       className="font-weight-bold"
                           >
-                            Guardar
+                            Web ID
                           </Typography>
-                        }
-                        {
-                          savingProfile &&
-                          <Spinner animation="border"
-                                   variant="light"
-                                   role="status"
-                                   size="sm"
+                        </Form.Label>
+                        <Form.Control plaintext
+                                      readOnly
+                                      defaultValue={webId}
+                        />
+                      </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                      <Form.Group as={Col}
+                                  controlId="webIdFirstName"
+                      >
+                        <Form.Label>
+                          <Typography variant="overline"
+                                      className="font-weight-bold"
                           >
-                            <span className="sr-only">Guardando</span>
-                          </Spinner>
-                        }
-                      </Button>
-                    </Form.Group>
-                  </Form.Row>
-                </Form>
+                            Nombre
+                          </Typography>
+                        </Form.Label>
+                        <Form.Control placeholder="Ingresar"
+                                      value={firstName}
+                                      onChange={firstNameOnChange}
+                        />
+                      </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                      <Form.Group as={Col}
+                                  controlId="webIdLastName"
+                      >
+                        <Form.Label>
+                          <Typography variant="overline"
+                                      className="font-weight-bold"
+                          >
+                            Apellido
+                          </Typography>
+                        </Form.Label>
+                        <Form.Control placeholder="Ingresar"
+                                      value={lastName}
+                                      onChange={lastNameOnChange}
+                        />
+                      </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                      <Form.Group as={Col}
+                                  controlId="webIdLastName"
+                      >
+                        <Button variant="primary"
+                                block
+                                disabled={disabledSaveProfile}
+                                onClick={submitSaveProfile}
+                        >
+                          {
+                            !savingProfile &&
+                            <Typography variant="button"
+                                        className="font-weight-bold"
+                            >
+                              Guardar
+                            </Typography>
+                          }
+                          {
+                            savingProfile &&
+                            <Spinner animation="border"
+                                     variant="light"
+                                     role="status"
+                                     size="sm"
+                            >
+                              <span className="sr-only">Guardando</span>
+                            </Spinner>
+                          }
+                        </Button>
+                      </Form.Group>
+                    </Form.Row>
+                  </Form>
+                }
               </Card.Body>
             </Accordion.Collapse>
           </Card>
