@@ -29,12 +29,14 @@ export default function Profile({session, setSession}) {
       let currentWebId = session.webId;
       getDocument(currentWebId).then(
         (document) => {
-          let [profileWebId, profileFirstName, profileLastName] = getProfileData(document, currentWebId);
-          setWebId(profileWebId);
-          setwebIdFirstName(profileFirstName);
-          setFirstName(profileFirstName);
-          setwebIdLastName(profileLastName);
-          setLastName(profileLastName);
+          if (document) {
+            let [profileWebId, profileFirstName, profileLastName] = getProfileData(document, currentWebId);
+            setWebId(profileWebId);
+            setwebIdFirstName(profileFirstName);
+            setFirstName(profileFirstName);
+            setwebIdLastName(profileLastName);
+            setLastName(profileLastName);
+          }
         }
       );
     }

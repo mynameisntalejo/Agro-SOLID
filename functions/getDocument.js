@@ -1,11 +1,11 @@
 import {fetchDocument} from "tripledoc";
 
-export const getDocument = async (url) => {
-  if (url) {
-    let document = await fetchDocument(url);
-    if (document) {
-      return document;
+export const getDocument = async (uri) => {
+  if (uri) {
+    try {
+      return await fetchDocument(uri);
+    } catch (error) {
+      return false;
     }
   }
-  return false;
 };
