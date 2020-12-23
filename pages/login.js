@@ -87,7 +87,8 @@ export default function Login({session, setSession}) {
               >
                 <option value="" disabled>Seleccionar</option>
                 <option value="https://inrupt.net">https://inrupt.net</option>
-                <option value="https://solid.community">https://solid.community</option>
+                <option value="https://solidcommunity.net">https://solidcommunity.net</option>
+                <option value="https://solidweb.org">https://solidweb.org</option>
               </Form.Control>
             </Form.Group>
           </Form>
