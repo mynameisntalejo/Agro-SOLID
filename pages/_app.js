@@ -19,11 +19,8 @@ function MyApp({Component, pageProps}) {
           router.push("/login");
         }
         setSession(currentSession);
-        checkAgroSolidDocument(currentSession.webId).then(
-          () => {
-            setRender(true);
-          }
-        );
+        checkAgroSolidDocument(currentSession.webId);
+        setRender(true);
       }
     )
   }, []);
