@@ -4,7 +4,7 @@ import {initializeAgroSolidOwl} from "./initializeAgroSolidOwl";
 
 export const checkAgroSolidDocument = (webId) => {
   let webIdRoot = `${webId.split(".net/")[0]}.net/`
-  let documentUri = `${webIdRoot}prueba4`;
+  let documentUri = `${webIdRoot}agrosolid`;
   getDocument(documentUri).then(
     async (document) => {
       if (!document) {
