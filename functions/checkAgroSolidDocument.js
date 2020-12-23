@@ -12,6 +12,11 @@ export const checkAgroSolidDocument = (webId) => {
         await document.save();
         await initializeAgroSolidOwl(`${webIdRoot}/agrosolid.owl`);
       }
+      getDocument(document.getAclRef()).then(
+        (documentAcl) => {
+          console.log("documentAcl", documentAcl);
+        }
+      );
     }
   )
 };
