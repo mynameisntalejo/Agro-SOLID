@@ -1,6 +1,7 @@
-import "fontsource-roboto"
+import "fontsource-roboto";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/globals.css"
+import "../styles/main.css";
+import "../components/faLibrary";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {getSession} from "../functions/getSession";

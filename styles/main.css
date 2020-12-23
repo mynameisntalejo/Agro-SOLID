@@ -1,0 +1,10 @@
+/* Importación de los css modularizados */
+
+@import "colors.css";
+@import "cleaners.css";
+@import "body.css";
+@import "navbar.css";
+@import "buttons.css";
+@import "forms.css";
+@import "links.css";
+@import "separatingLine.css";

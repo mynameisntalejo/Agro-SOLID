@@ -1,0 +1,11 @@
+/* HTML y Body */
+
+html, body {
+    height: 100%;
+    background-color: var(--stronger-grey);
+    color: var(--strong-grey);
+}
+
+body {
+    font-family: "Roboto", serif;
+}
