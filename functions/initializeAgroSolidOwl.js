@@ -44,6 +44,9 @@ export const initializeAgroSolidOwl = async (documentUri) => {
   const surfaceProperty = document.addSubject({identifier: "surface"});
   surfaceProperty.setRef(rdf.type, owl.DatatypeProperty);
   surfaceProperty.setRef(rdfs.subPropertyOf, owl.topDataProperty);
+  surfaceProperty.setRef(rdfs.domain, farmClass.asRef());
+  surfaceProperty.setRef(rdfs.domain, plotClass.asRef());
+  surfaceProperty.setRef(rdfs.range, "http://www.w3.org/2001/XMLSchema#double");
   // http://www.semanticweb.org/alejandrofernandez/ontologies/2020/9/untitled-ontology-17#timestamp
   const timestampProperty = document.addSubject({identifier: "timestamp"});
   timestampProperty.setRef(rdf.type, owl.DatatypeProperty);
