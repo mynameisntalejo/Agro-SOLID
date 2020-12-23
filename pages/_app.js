@@ -14,12 +14,13 @@ function MyApp({Component, pageProps}) {
 
   useEffect(() => {
     getSession().then(
-      (currentSession) => {
-        if (!currentSession) {
-          router.push("/login");
+      async (currentSession) => {
+        if (currentSession) {
+          setSession(currentSession);
+          checkAgroSolidDocument(currentSession.webId);
+        } else {
+          await router.push("/login");
         }
-        setSession(currentSession);
-        checkAgroSolidDocument(currentSession.webId);
         setRender(true);
       }
     )
