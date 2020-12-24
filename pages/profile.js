@@ -77,7 +77,7 @@ export default function Profile({session, setSession}) {
 
   return (
     <BaseLayout pageTitle="Mis datos">
-      <NavigationBar/>
+      <NavigationBar setSession={setSession}/>
       <Container fluid>
         <Accordion defaultActiveKey="person"
                    className="py-5"

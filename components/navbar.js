@@ -3,9 +3,19 @@ import Nav from "react-bootstrap/Nav";
 import Link from "next/link"
 import {useRouter} from "next/router"
 import Typography from "@material-ui/core/Typography";
+import auth from "solid-auth-client";
 
-export default function NavigationBar({logout}) {
+export default function NavigationBar({setSession}) {
   const router = useRouter();
+
+  const logout = () => {
+    auth.logout().then(
+      () => {
+        setSession(false);
+        router.push("/login");
+      }
+    )
+  }
 
   return (
     <Navbar bg="dark"
