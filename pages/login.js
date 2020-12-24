@@ -1,6 +1,6 @@
 import {useState} from "react";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Figure from "react-bootstrap/Figure";
@@ -108,7 +108,7 @@ export default function Login({session, setSession}) {
       </Row>
       <Row className="justify-content-center">
         <Col className="text-center" xl={4} lg={4} md={4} sm={4} xs={4}>
-          <Button variant="contained"
+          <Button variant="primary"
                   onClick={() => setProvider("")}
           >
             <Typography variant="button">
@@ -117,8 +117,7 @@ export default function Login({session, setSession}) {
           </Button>
         </Col>
         <Col className="text-center" xl={4} lg={4} md={4} sm={4} xs={4}>
-          <Button variant="contained"
-                  color="primary"
+          <Button variant="primary"
                   onClick={identityProviderFormSubmit}
           >
             <Typography variant="button">
@@ -137,7 +136,6 @@ export default function Login({session, setSession}) {
           <Alert closeLabel="Cerrar"
                  variant="success"
                  show={true}
-                 onClose={() => setError(false)}
                  className="text-left"
           >
             <Alert.Heading>Se encuentra autenticado</Alert.Heading>
@@ -150,8 +148,7 @@ export default function Login({session, setSession}) {
           </Alert>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="contained"
-                  color="primary"
+          <Button variant="primary"
                   onClick={() => router.push("/")}
           >
             <Typography variant="button">
