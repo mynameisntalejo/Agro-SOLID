@@ -1,7 +1,8 @@
 import {foaf, owl, rdf, rdfs} from "rdf-namespaces";
 import {createDocument} from "tripledoc";
+import {checkOwnerAuthDocument} from "./checkOwnerAuthDocument";
 
-export const initializeAgroSolidOwl = async (documentUri) => {
+export const initializeAgroSolidOwl = async (documentUri, webId) => {
   const document = createDocument(documentUri);
 
   /* Classes */
@@ -76,5 +77,6 @@ export const initializeAgroSolidOwl = async (documentUri) => {
   hasPlotProperty.setRef(rdfs.domain, farmClass.asRef());
   hasPlotProperty.setRef(rdfs.range, plotClass.asRef());
 
-  await document.save();
+  const agroSolidOwlDocument = await document.save();
+  checkOwnerAuthDocument(agroSolidOwlDocument, webId);
 };

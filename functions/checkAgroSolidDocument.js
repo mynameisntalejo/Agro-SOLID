@@ -7,17 +7,12 @@ export const checkAgroSolidDocument = async (webId) => {
   let documentUri = `${webIdRoot}/agrosolid`;
   getDocument(documentUri).then(
     async (document) => {
-      if (!document) {
-        const document = createDocument(documentUri);
-        await document.save();
+      let agroSolidDocument = document;
+      if (!agroSolidDocument) {
+        const localDocument = createDocument(documentUri);
+        agroSolidDocument = await localDocument.save();
       }
-      getDocument(documentUri).then(
-        (document) => {
-          if (document) {
-            checkOwnerAuthDocument(document, webId);
-          }
-        }
-      );
+      checkOwnerAuthDocument(agroSolidDocument, webId);
     }
   );
 
@@ -26,13 +21,6 @@ Se utiliza el agrosolid.owl alojado en agrosolid.inrupt.net
 Se deja el código por si cambia la lógica del sistema y se llega a necesitar
 
   let agroSolidOwlUri = `${webIdRoot}/agrosolid.owl`;
-  await initializeAgroSolidOwl(agroSolidOwlUri);
-  getDocument(agroSolidOwlUri).then(
-    (document) => {
-      if (document) {
-        checkOwnerAuthDocument(document, webId);
-      }
-    }
-  );
+  await initializeAgroSolidOwl(agroSolidOwlUri, webId);
 */
 };
