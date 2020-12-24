@@ -17,7 +17,7 @@ function MyApp({Component, pageProps}) {
       async (currentSession) => {
         if (currentSession) {
           setSession(currentSession);
-          checkAgroSolidDocument(currentSession.webId);
+          await checkAgroSolidDocument(currentSession.webId);
         } else {
           await router.push("/login");
         }
