@@ -10,7 +10,6 @@ export const createCrop = async (cropName) => {
         crop.setRef(owl.Class, ags.Crop);
         crop.setString(ags.name, cropName);
         await document.save();
-        console.log("Crop guardado");
       }
     }
   );
