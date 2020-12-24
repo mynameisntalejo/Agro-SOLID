@@ -108,7 +108,7 @@ export default function Login({session, setSession}) {
       </Row>
       <Row className="justify-content-center">
         <Col className="text-center" xl={4} lg={4} md={4} sm={4} xs={4}>
-          <Button variant="primary"
+          <Button variant="black"
                   onClick={() => setProvider("")}
           >
             <Typography variant="button">
