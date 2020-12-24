@@ -4,20 +4,20 @@ import {checkOwnerAuthDocument} from "./checkOwnerAuthDocument";
 
 export const checkAgroSolidDocument = async (webId) => {
   let webIdRoot = `${webId.split("/profile/card#me")[0]}`
-  let documentUri = `${webIdRoot}/agrosolid`;
+  let documentUri = `${webIdRoot}/prueba6`;
   getDocument(documentUri).then(
     async (document) => {
       if (!document) {
         const document = createDocument(documentUri);
         await document.save();
       }
-    }
-  );
-  getDocument(documentUri).then(
-    (document) => {
-      if (document) {
-        checkOwnerAuthDocument(document, webId);
-      }
+      getDocument(documentUri).then(
+        (document) => {
+          if (document) {
+            checkOwnerAuthDocument(document, webId);
+          }
+        }
+      );
     }
   );
 
