@@ -6,6 +6,10 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import {getSession} from "../functions/getSession";
 import {checkAgroSolidDocument} from "../functions/checkAgroSolidDocument";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import {Spinner} from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 function MyApp({Component, pageProps}) {
   const [session, setSession] = useState(false);
@@ -26,13 +30,25 @@ function MyApp({Component, pageProps}) {
     )
   }, []);
 
-  return (
-    <>
-      {
-        render && <Component {...pageProps} session={session} setSession={setSession}/>
-      }
-    </>
-  );
+  if (render) {
+    return <Component {...pageProps} session={session} setSession={setSession}/>;
+  } else {
+    return (
+      <Container fluid className="pt-5">
+        <Row className="pt-5">
+          <Col className="text-center pt-5">
+            <Spinner animation="border"
+                     variant="light"
+                     role="status"
+                     size="lg"
+            >
+              <span className="sr-only">Cargando</span>
+            </Spinner>
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
 }
 
 export default MyApp
