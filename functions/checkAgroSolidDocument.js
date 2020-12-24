@@ -4,7 +4,7 @@ import {checkOwnerAuthDocument} from "./checkOwnerAuthDocument";
 
 export const checkAgroSolidDocument = async (webId) => {
   let webIdRoot = `${webId.split("/profile/card#me")[0]}`
-  let documentUri = `${webIdRoot}/prueba6`;
+  let documentUri = `${webIdRoot}/agrosolid`;
   getDocument(documentUri).then(
     async (document) => {
       if (!document) {
