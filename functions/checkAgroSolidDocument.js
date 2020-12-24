@@ -1,6 +1,5 @@
 import {createDocument} from "tripledoc";
 import {getDocument} from "./getDocument";
-import {initializeAgroSolidOwl} from "./initializeAgroSolidOwl";
 import {checkOwnerAuthDocument} from "./checkOwnerAuthDocument";
 
 export const checkAgroSolidDocument = async (webId) => {
@@ -21,6 +20,11 @@ export const checkAgroSolidDocument = async (webId) => {
       }
     }
   );
+
+/*
+Se utiliza el agrosolid.owl alojado en agrosolid.inrupt.net
+Se deja el código por si cambia la lógica del sistema y se llega a necesitar
+
   let agroSolidOwlUri = `${webIdRoot}/agrosolid.owl`;
   await initializeAgroSolidOwl(agroSolidOwlUri);
   getDocument(agroSolidOwlUri).then(
@@ -29,5 +33,6 @@ export const checkAgroSolidDocument = async (webId) => {
         checkOwnerAuthDocument(document, webId);
       }
     }
-  )
+  );
+*/
 };
