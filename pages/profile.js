@@ -57,7 +57,7 @@ export default function Profile({session, setSession}) {
         setDisabledSaveProfile(false)
         : setDisabledSaveProfile(true)
       : setDisabledSaveProfile(true)
-  }, [firstName, lastName])
+  }, [firstName, lastName]);
 
   const submitSaveProfile = () => {
     setDisabledSaveProfile(true);
@@ -73,7 +73,7 @@ export default function Profile({session, setSession}) {
         }
       );
     }
-  }
+  };
 
   return (
     <BaseLayout pageTitle="Mis datos">
@@ -162,7 +162,7 @@ export default function Profile({session, setSession}) {
                     </Form.Row>
                     <Form.Row>
                       <Form.Group as={Col}
-                                  controlId="webIdLastName"
+                                  controlId="saveProfile"
                       >
                         <Button variant="primary"
                                 block
@@ -202,13 +202,13 @@ export default function Profile({session, setSession}) {
               >
                 <FontAwesomeIcon icon="tractor"
                                  className="mx-3 fa-w-20"
-                /> Mis granjas
+                /> Mis campos
               </Typography>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="farm">
               <Card.Body>
                 <Typography variant="body1">
-                  Mis granjas
+                  Mis campos
                 </Typography>
               </Card.Body>
             </Accordion.Collapse>
