@@ -1,5 +1,5 @@
 import {getDocument} from "./getDocument";
-import {owl} from "rdf-namespaces";
+import {rdf} from "rdf-namespaces";
 import * as ags from "../owl";
 
 export const createCrop = async (cropName) => {
@@ -7,7 +7,7 @@ export const createCrop = async (cropName) => {
     async (document) => {
       if (document) {
         const crop = document.addSubject({identifier: cropName});
-        crop.setRef(owl.Class, ags.Crop);
+        crop.setRef(rdf.type, ags.Crop);
         crop.setString(ags.name, cropName);
         await document.save();
       }
