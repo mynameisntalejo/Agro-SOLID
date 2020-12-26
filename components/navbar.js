@@ -30,7 +30,8 @@ export default function NavigationBar({setSession}) {
                height="50"
                className="d-inline-block mr-2"
           />
-          <Typography variant="h4"
+          <Typography gutterBottom
+                      variant="h4"
                       className="font-weight-bold"
           >
             Agro-SOLID

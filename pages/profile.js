@@ -16,6 +16,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Row from "react-bootstrap/Row";
 import {getProfileFarmsData} from "../functions/getProfileFarmsData";
 import LoaderSpinner from "../components/loaderSpinner";
+import Alert from "react-bootstrap/Alert";
 
 export default function Profile({session, setSession}) {
   const [loadingProfile, setLoadingProfile] = useState(true);
@@ -296,7 +297,9 @@ export default function Profile({session, setSession}) {
                                                               >
                                                                 Nombre del campo
                                                               </Typography>
-                                                              <Typography variant="body1">
+                                                              <Typography gutterBottom
+                                                                          variant="body1"
+                                                              >
                                                                 {farm.name}
                                                               </Typography>
                                                               <Typography variant="overline"
@@ -304,7 +307,9 @@ export default function Profile({session, setSession}) {
                                                               >
                                                                 Superficie del campo
                                                               </Typography>
-                                                              <Typography variant="body1">
+                                                              <Typography gutterBottom
+                                                                          variant="body1"
+                                                              >
                                                                 {farm.surface} km²
                                                               </Typography>
                                                               <Typography variant="overline"
@@ -312,7 +317,9 @@ export default function Profile({session, setSession}) {
                                                               >
                                                                 Dueño del campo
                                                               </Typography>
-                                                              <Typography variant="body1">
+                                                              <Typography gutterBottom
+                                                                          variant="body1"
+                                                              >
                                                                 {farm.owner.firstName} {farm.owner.lastName}
                                                               </Typography>
                                                             </Col>
@@ -359,7 +366,9 @@ export default function Profile({session, setSession}) {
                                                                   >
                                                                     Nombre de la parcela
                                                                   </Typography>
-                                                                  <Typography variant="body1">
+                                                                  <Typography gutterBottom
+                                                                              variant="body1"
+                                                                  >
                                                                     {plot.name}
                                                                   </Typography>
                                                                   <Typography variant="overline"
@@ -367,7 +376,9 @@ export default function Profile({session, setSession}) {
                                                                   >
                                                                     Superficie de la parcela
                                                                   </Typography>
-                                                                  <Typography variant="body1">
+                                                                  <Typography gutterBottom
+                                                                              variant="body1"
+                                                                  >
                                                                     {plot.surface} km²
                                                                   </Typography>
                                                                 </Col>

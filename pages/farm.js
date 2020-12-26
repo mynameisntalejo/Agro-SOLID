@@ -283,7 +283,9 @@ export default function Farm({session, setSession}) {
                  className="text-left"
           >
             <Alert.Heading>¡Éxito! </Alert.Heading>
-            <Typography gutterBottom variant="body1" component="p">
+            <Typography gutterBottom
+                        variant="body1"
+            >
               Se dió de alta un nuevo campo correctamente
             </Typography>
           </Alert>

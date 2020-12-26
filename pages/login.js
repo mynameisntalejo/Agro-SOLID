@@ -18,16 +18,13 @@ export default function Login({session, setSession}) {
   const [errorMsg, setErrorMsg] = useState("Ocurrió un error");
   const router = useRouter();
 
-  const identityProviderFormSubmit = () => {
+  const identityProviderFormSubmit = async () => {
     cleanError();
     if (provider) {
-      getSession().then(
-        async (session) => {
-          if (!session) {
-            await auth.login(provider);
-          }
-        }
-      )
+      let session = await getSession();
+      if (!session) {
+        await auth.login(provider);
+      }
     } else {
       showError("Debe seleccionar un proveedor");
     }
@@ -54,7 +51,8 @@ export default function Login({session, setSession}) {
               src="/static/images/agro-solid-logo.png"
             />
             <Figure.Caption>
-              <Typography variant="h4"
+              <Typography gutterBottom
+                          variant="h4"
                           className="font-weight-bold text-white"
               >
                 Agro-SOLID
@@ -100,7 +98,9 @@ export default function Login({session, setSession}) {
                  className="text-left"
           >
             <Alert.Heading>Error</Alert.Heading>
-            <Typography gutterBottom variant="body1" component="p">
+            <Typography gutterBottom
+                        variant="body1"
+            >
               {errorMsg}
             </Typography>
           </Alert>
@@ -141,10 +141,14 @@ export default function Login({session, setSession}) {
                  className="text-left"
           >
             <Alert.Heading>Se encuentra autenticado</Alert.Heading>
-            <Typography gutterBottom variant="body1" component="p">
+            <Typography gutterBottom
+                        variant="body1"
+            >
               Con el siguiente WebID
             </Typography>
-            <Typography gutterBottom variant="body2" component="p">
+            <Typography gutterBottom
+                        variant="body2"
+            >
               {session ? session.webId : null}
             </Typography>
           </Alert>
