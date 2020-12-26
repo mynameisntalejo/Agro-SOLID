@@ -12,6 +12,7 @@ import Modal from "react-bootstrap/Modal";
 import Alert from "react-bootstrap/Alert";
 import {useRouter} from "next/router";
 import LoaderSpinner from "../components/loaderSpinner";
+import ModalAlert from "../components/modalAlert";
 
 export default function Farm({session, setSession}) {
   const [farmName, setFarmName] = useState("");
@@ -271,36 +272,13 @@ export default function Farm({session, setSession}) {
           </Card.Body>
         </Card>
       </Container>
-      <Modal show={successSaveFarm}
-             onHide={() => router.push("/profile")}
-             backdrop="static"
-             keyboard={false}
-      >
-        <Modal.Body>
-          <Alert closeLabel="Cerrar"
-                 variant="success"
-                 show={true}
-                 className="text-left"
-          >
-            <Alert.Heading>¡Éxito! </Alert.Heading>
-            <Typography gutterBottom
-                        variant="body1"
-            >
-              Se dió de alta un nuevo campo correctamente
-            </Typography>
-          </Alert>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary"
-                  block
-                  onClick={() => router.push("/profile")}
-          >
-            <Typography variant="button">
-              Aceptar
-            </Typography>
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <ModalAlert show={successSaveFarm}
+                  onHide={() => router.push("/profile")}
+                  variant="success"
+                  title="¡Éxito!"
+                  msg="Se dió de alta un nuevo campo correctamente"
+
+      />
     </BaseLayout>
   );
 }

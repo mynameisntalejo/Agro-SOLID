@@ -11,6 +11,7 @@ import Modal from "react-bootstrap/Modal";
 import BaseLayout from "../components/base_layout";
 import {getSession} from "../functions/getSession";
 import {useRouter} from "next/router";
+import ModalAlert from "../components/modalAlert";
 
 export default function Login({session, setSession}) {
   const [provider, setProvider] = useState("");
@@ -128,42 +129,13 @@ export default function Login({session, setSession}) {
           </Button>
         </Col>
       </Row>
+      <ModalAlert show={!!session}
+                  onHide={() => router.push("/")}
+                  variant="success"
+                  title="Se encuentra autenticado"
+                  msg={`Con el siguiente WebID ${session ? session.webId : null}`}
 
-      <Modal show={!!session}
-             onHide={() => router.push("/")}
-             backdrop="static"
-             keyboard={false}
-      >
-        <Modal.Body>
-          <Alert closeLabel="Cerrar"
-                 variant="success"
-                 show={true}
-                 className="text-left"
-          >
-            <Alert.Heading>Se encuentra autenticado</Alert.Heading>
-            <Typography gutterBottom
-                        variant="body1"
-            >
-              Con el siguiente WebID
-            </Typography>
-            <Typography gutterBottom
-                        variant="body2"
-            >
-              {session ? session.webId : null}
-            </Typography>
-          </Alert>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary"
-                  block
-                  onClick={() => router.push("/")}
-          >
-            <Typography variant="button">
-              Aceptar
-            </Typography>
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      />
     </BaseLayout>
   );
 }
