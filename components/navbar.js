@@ -4,17 +4,19 @@ import Link from "next/link"
 import {useRouter} from "next/router"
 import Typography from "@material-ui/core/Typography";
 import auth from "solid-auth-client";
+import {useState} from "react";
+import LoaderSpinner from "./loaderSpinner";
+import {Button} from "react-bootstrap";
 
 export default function NavigationBar({setSession}) {
+  const [loadingLogout, setLoadingLogout] = useState(false);
   const router = useRouter();
 
-  const logout = () => {
-    auth.logout().then(
-      () => {
-        setSession(false);
-        router.push("/login");
-      }
-    )
+  const logout = async () => {
+    setLoadingLogout(true);
+    await auth.logout();
+    setSession(false);
+    router.push("/login");
   }
 
   return (
@@ -59,11 +61,22 @@ export default function NavigationBar({setSession}) {
             </Typography>
           </Nav.Link>
           <Nav.Link href="#"
+                    disabled={loadingLogout}
                     onClick={logout}
           >
-            <Typography variant="button">
-              Salir
-            </Typography>
+            {
+              !loadingLogout &&
+              <Typography variant="button">
+                Salir
+              </Typography>
+            }
+            {
+              loadingLogout &&
+              <LoaderSpinner variant="light"
+                             size="sm"
+                             srmsg="Saliendo"
+              />
+            }
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
