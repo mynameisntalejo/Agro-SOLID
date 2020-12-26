@@ -1,6 +1,8 @@
 import {foaf} from "rdf-namespaces";
+import {getDocument} from "./getDocument";
 
-export const getProfileData = (document, webId) => {
+export const getProfileData = async (webId) => {
+  let document = await getDocument(webId);
   let profileFirstName = "", profileLastName = "";
   let profile = document.getSubject(webId);
   let currentFirstName = profile.getString(foaf.firstName);

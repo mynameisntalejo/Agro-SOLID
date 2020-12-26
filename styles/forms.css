@@ -12,10 +12,6 @@
     color: var(--strong-grey) !important;
 }
 
-.btn-light {
-    background: white !important;
-}
-
 .form-control:focus {
     border: 1px solid var(--grey) !important;
 }
@@ -84,7 +80,7 @@ input[type=radio] span {
 
 input[type=radio]:checked::after {
     content: "\f111";
-    color: var(--primary-blue);
+    color: var(--primary);
 }
 
 /* Requerido */
