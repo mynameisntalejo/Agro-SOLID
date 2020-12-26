@@ -5,6 +5,10 @@
     transition: 0.1s all;
 }
 
+.MuiTypography-button {
+    font-weight: 700 !important;
+}
+
 /*
 .btn:not(.badge-pill) {
     border-radius: 0;

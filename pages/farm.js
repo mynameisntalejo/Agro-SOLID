@@ -75,9 +75,7 @@ export default function Farm({session, setSession}) {
       <Container fluid className="py-5">
         <Card>
           <Card.Header>
-            <Typography variant="button"
-                        className="font-weight-bold"
-            >
+            <Typography variant="button">
               Nuevo campo
             </Typography>
           </Card.Header>
@@ -257,9 +255,7 @@ export default function Farm({session, setSession}) {
                   >
                     {
                       !savingFarm &&
-                      <Typography variant="button"
-                                  className="font-weight-bold"
-                      >
+                      <Typography variant="button">
                         Guardar
                       </Typography>
                     }
@@ -299,6 +295,7 @@ export default function Farm({session, setSession}) {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary"
+                  block
                   onClick={() => router.push("/profile")}
           >
             <Typography variant="button">

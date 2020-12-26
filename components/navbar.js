@@ -46,27 +46,21 @@ export default function NavigationBar({setSession}) {
           <Nav.Link href="/"
                     className={(router.pathname === "/") ? "active active-page" : ""}
           >
-            <Typography variant="button"
-                        className="font-weight-bold"
-            >
+            <Typography variant="button">
               Inicio
             </Typography>
           </Nav.Link>
           <Nav.Link href="/profile"
                     className={(router.pathname === "/profile") ? "active active-page" : ""}
           >
-            <Typography variant="button"
-                        className="font-weight-bold"
-            >
+            <Typography variant="button">
               Mis datos
             </Typography>
           </Nav.Link>
           <Nav.Link href="#"
                     onClick={logout}
           >
-            <Typography variant="button"
-                        className="font-weight-bold"
-            >
+            <Typography variant="button">
               Salir
             </Typography>
           </Nav.Link>

@@ -89,9 +89,7 @@ export default function Profile({session, setSession}) {
         <Accordion defaultActiveKey="person">
           <Card>
             <Accordion.Toggle as={Card.Header} eventKey="person">
-              <Typography variant="button"
-                          className="font-weight-bold"
-              >
+              <Typography variant="button">
                 <FontAwesomeIcon icon="hiking"
                                  className="mx-3 fa-w-20"
                 /> Mis datos
@@ -178,9 +176,7 @@ export default function Profile({session, setSession}) {
                         >
                           {
                             !savingProfile &&
-                            <Typography variant="button"
-                                        className="font-weight-bold"
-                            >
+                            <Typography variant="button">
                               Guardar
                             </Typography>
                           }
@@ -204,9 +200,7 @@ export default function Profile({session, setSession}) {
           </Card>
           <Card>
             <Accordion.Toggle as={Card.Header} eventKey="farm">
-              <Typography variant="button"
-                          className="font-weight-bold"
-              >
+              <Typography variant="button">
                 <FontAwesomeIcon icon="tractor"
                                  className="mx-3 fa-w-20"
                 /> Mis campos
@@ -244,9 +238,7 @@ export default function Profile({session, setSession}) {
                                                   action
                                                   href={`#farm${farmIndex}`}
                                   >
-                                    <Typography variant="button"
-                                                className="font-weight-bold"
-                                    >
+                                    <Typography variant="button">
                                       {farm.name}
                                     </Typography>
                                   </ListGroup.Item>
@@ -279,9 +271,7 @@ export default function Profile({session, setSession}) {
                                                                     action
                                                                     href={`#farm${farmIndex}plot${plotIndex}`}
                                                     >
-                                                      <Typography variant="button"
-                                                                  className="font-weight-bold"
-                                                      >
+                                                      <Typography variant="button">
                                                         {plot.name}
                                                       </Typography>
                                                     </ListGroup.Item>
@@ -302,9 +292,7 @@ export default function Profile({session, setSession}) {
                                                     >
                                                       <Card>
                                                         <Card.Header>
-                                                          <Typography variant="button"
-                                                                      className="font-weight-bold"
-                                                          >
+                                                          <Typography variant="button">
                                                             Campo "{farm.name}"
                                                           </Typography>
                                                         </Card.Header>
