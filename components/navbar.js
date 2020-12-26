@@ -14,8 +14,8 @@ export default function NavigationBar({setSession}) {
 
   const logout = async () => {
     setLoadingLogout(true);
-    await auth.logout();
     setSession(false);
+    await auth.logout();
     router.push("/login");
   }
 
