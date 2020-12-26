@@ -18,17 +18,17 @@ function MyApp({Component, pageProps}) {
   const router = useRouter();
 
   useEffect(() => {
-    getSession().then(
-      async (currentSession) => {
-        if (currentSession) {
-          setSession(currentSession);
-          await checkAgroSolidDocument(currentSession.webId);
-        } else {
-          await router.push("/login");
-        }
-        setRender(true);
+    const fetchSession = async () => {
+      let currentSession = await getSession();
+      if (currentSession) {
+        setSession(currentSession);
+        await checkAgroSolidDocument(currentSession.webId);
+      } else {
+        await router.push("/login");
       }
-    )
+      setRender(true);
+    }
+    fetchSession();
   }, []);
 
   if (render) {
