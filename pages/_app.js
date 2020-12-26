@@ -10,6 +10,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {Spinner} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
+import LoaderSpinner from "../components/loaderSpinner";
 
 function MyApp({Component, pageProps}) {
   const [session, setSession] = useState(false);
@@ -37,13 +38,10 @@ function MyApp({Component, pageProps}) {
       <Container fluid className="pt-5">
         <Row className="pt-5">
           <Col className="text-center pt-5">
-            <Spinner animation="border"
-                     variant="light"
-                     role="status"
-                     size="lg"
-            >
-              <span className="sr-only">Cargando</span>
-            </Spinner>
+            <LoaderSpinner variant="light"
+                           size="lg"
+                           srmsg="Cargando"
+            />
           </Col>
         </Row>
       </Container>

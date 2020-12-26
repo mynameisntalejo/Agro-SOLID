@@ -15,6 +15,7 @@ import {useRouter} from "next/router";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Row from "react-bootstrap/Row";
 import {getProfileFarmsData} from "../functions/getProfileFarmsData";
+import LoaderSpinner from "../components/loaderSpinner";
 
 export default function Profile({session, setSession}) {
   const [loadingProfile, setLoadingProfile] = useState(true);
@@ -101,13 +102,10 @@ export default function Profile({session, setSession}) {
                   loadingProfile &&
                   <Row>
                     <Col className="text-center">
-                      <Spinner animation="border"
-                               variant="dark"
-                               role="status"
-                               size="lg"
-                      >
-                        <span className="sr-only">Cargando</span>
-                      </Spinner>
+                      <LoaderSpinner variant="dark"
+                                     size="lg"
+                                     srmsg="Cargando"
+                      />
                     </Col>
                   </Row>
                 }
@@ -182,13 +180,10 @@ export default function Profile({session, setSession}) {
                           }
                           {
                             savingProfile &&
-                            <Spinner animation="border"
-                                     variant="light"
-                                     role="status"
-                                     size="sm"
-                            >
-                              <span className="sr-only">Guardando</span>
-                            </Spinner>
+                            <LoaderSpinner variant="light"
+                                           size="sm"
+                                           srmsg="Guardando"
+                            />
                           }
                         </Button>
                       </Form.Group>
@@ -212,13 +207,10 @@ export default function Profile({session, setSession}) {
                   loadingProfileFarms &&
                   <Row>
                     <Col className="text-center">
-                      <Spinner animation="border"
-                               variant="dark"
-                               role="status"
-                               size="lg"
-                      >
-                        <span className="sr-only">Cargando</span>
-                      </Spinner>
+                      <LoaderSpinner variant="dark"
+                                     size="lg"
+                                     srmsg="Cargando"
+                      />
                     </Col>
                   </Row>
                 }

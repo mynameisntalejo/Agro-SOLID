@@ -11,6 +11,7 @@ import {saveFarmData} from "../functions/saveFarmData";
 import Modal from "react-bootstrap/Modal";
 import Alert from "react-bootstrap/Alert";
 import {useRouter} from "next/router";
+import LoaderSpinner from "../components/loaderSpinner";
 
 export default function Farm({session, setSession}) {
   const [farmName, setFarmName] = useState("");
@@ -127,13 +128,10 @@ export default function Farm({session, setSession}) {
                     !renderFarmPlots &&
                     <Row className="mb-3">
                       <Col className="text-center">
-                        <Spinner animation="border"
-                                 variant="dark"
-                                 role="status"
-                                 size="lg"
-                        >
-                          <span className="sr-only">Cargando</span>
-                        </Spinner>
+                        <LoaderSpinner variant="dark"
+                                       size="lg"
+                                       srmsg="Cargando"
+                        />
                       </Col>
                     </Row>
                   }
@@ -261,13 +259,10 @@ export default function Farm({session, setSession}) {
                     }
                     {
                       savingFarm &&
-                      <Spinner animation="border"
-                               variant="light"
-                               role="status"
-                               size="sm"
-                      >
-                        <span className="sr-only">Guardando</span>
-                      </Spinner>
+                      <LoaderSpinner variant="light"
+                                     size="sm"
+                                     srmsg="Guardando"
+                      />
                     }
                   </Button>
                 </Form.Group>
