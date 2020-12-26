@@ -107,7 +107,7 @@ export default function Login({session, setSession}) {
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col className="text-center" xl={4} lg={4} md={4} sm={4} xs={4}>
+        <Col className="text-center" xs={4}>
           <Button variant="black"
                   onClick={() => setProvider("")}
           >
@@ -116,7 +116,7 @@ export default function Login({session, setSession}) {
             </Typography>
           </Button>
         </Col>
-        <Col className="text-center" xl={4} lg={4} md={4} sm={4} xs={4}>
+        <Col className="text-center" xs={4}>
           <Button variant="primary"
                   onClick={identityProviderFormSubmit}
           >
