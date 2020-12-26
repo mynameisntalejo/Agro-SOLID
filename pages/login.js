@@ -7,7 +7,6 @@ import Figure from "react-bootstrap/Figure";
 import Form from "react-bootstrap/Form"
 import auth from "solid-auth-client";
 import Alert from "react-bootstrap/Alert"
-import Modal from "react-bootstrap/Modal";
 import BaseLayout from "../components/base_layout";
 import {getSession} from "../functions/getSession";
 import {useRouter} from "next/router";
@@ -22,8 +21,8 @@ export default function Login({session, setSession}) {
   const identityProviderFormSubmit = async () => {
     cleanError();
     if (provider) {
-      let session = await getSession();
-      if (!session) {
+      let currentSession = await getSession();
+      if (!currentSession) {
         await auth.login(provider);
       }
     } else {
