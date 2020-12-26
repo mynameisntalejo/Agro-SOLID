@@ -8,7 +8,6 @@ import {getSession} from "../functions/getSession";
 import {checkAgroSolidDocument} from "../functions/checkAgroSolidDocument";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {Spinner} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import LoaderSpinner from "../components/loaderSpinner";
 
