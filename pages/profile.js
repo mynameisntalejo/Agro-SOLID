@@ -1,12 +1,12 @@
-import BaseLayout from "../components/baseLayout";
-import NavigationBar from "../components/navbar"
+import Container from "react-bootstrap/Container";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
 import Typography from "@material-ui/core/Typography";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import BaseLayout from "../components/baseLayout";
 import ProfileDataForm from "../components/profileDataForm";
 import ProfileFarmData from "../components/profileFarmData";
+import NavigationBar from "../components/navbar"
 
 export default function Profile({session, setSession}) {
 

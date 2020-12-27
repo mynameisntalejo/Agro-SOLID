@@ -1,12 +1,11 @@
+import {useState} from "react";
+import {useRouter} from "next/router"
+import auth from "solid-auth-client";
+import Link from "next/link"
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Link from "next/link"
-import {useRouter} from "next/router"
 import Typography from "@material-ui/core/Typography";
-import auth from "solid-auth-client";
-import {useState} from "react";
 import LoaderSpinner from "./loaderSpinner";
-import {Button} from "react-bootstrap";
 
 export default function NavigationBar({setSession}) {
   const [loadingLogout, setLoadingLogout] = useState(false);

@@ -1,6 +1,6 @@
-import {getDocument} from "./getDocument";
 import {rdfs, rdf} from "rdf-namespaces";
 import * as ags from "../owl";
+import {getDocument} from "./getDocument";
 import {getProfileData} from "./getProfileData";
 
 export const getProfileFarmsData = async (webId) => {

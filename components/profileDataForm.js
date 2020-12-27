@@ -1,14 +1,14 @@
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
+import {useEffect, useState} from "react";
+import {useRouter} from "next/router";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Typography from "@material-ui/core/Typography";
 import LoaderSpinner from "./loaderSpinner";
-import {useEffect, useState} from "react";
-import {getProfileData} from "../functions/getProfileData";
-import {getDocument} from "../functions/getDocument";
 import {editProfileData} from "../functions/editProfileData";
-import {useRouter} from "next/router";
+import {getDocument} from "../functions/getDocument";
+import {getProfileData} from "../functions/getProfileData";
 
 export default function ProfileDataForm({session}) {
   const [loadingProfile, setLoadingProfile] = useState(true);

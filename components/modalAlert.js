@@ -1,7 +1,7 @@
-import Modal from "react-bootstrap/Modal";
-import Alert from "react-bootstrap/Alert";
-import Typography from "@material-ui/core/Typography";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+import Modal from "react-bootstrap/Modal";
+import Typography from "@material-ui/core/Typography";
 
 export default function ModalAlert({show, onHide, variant, title, msg}) {
   return (

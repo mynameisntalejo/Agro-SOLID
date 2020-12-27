@@ -1,15 +1,15 @@
 import "fontsource-roboto";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/main.css";
-import "../components/faLibrary";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import {getSession} from "../functions/getSession";
-import {checkAgroSolidDocument} from "../functions/checkAgroSolidDocument";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
+import "../components/faLibrary";
 import LoaderSpinner from "../components/loaderSpinner";
+import {checkAgroSolidDocument} from "../functions/checkAgroSolidDocument";
+import {getSession} from "../functions/getSession";
 
 function MyApp({Component, pageProps}) {
   const [session, setSession] = useState(false);

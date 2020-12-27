@@ -1,15 +1,15 @@
 import {useState} from "react";
-import Typography from "@material-ui/core/Typography";
-import Button from "react-bootstrap/Button";
+import {useRouter} from "next/router";
+import auth from "solid-auth-client";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Figure from "react-bootstrap/Figure";
 import Form from "react-bootstrap/Form"
-import auth from "solid-auth-client";
+import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert"
-import BaseLayout from "../components/baseLayout";
+import Figure from "react-bootstrap/Figure";
+import Typography from "@material-ui/core/Typography";
 import {getSession} from "../functions/getSession";
-import {useRouter} from "next/router";
+import BaseLayout from "../components/baseLayout";
 import ModalAlert from "../components/modalAlert";
 
 export default function Login({session, setSession}) {

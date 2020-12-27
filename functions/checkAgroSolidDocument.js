@@ -1,6 +1,6 @@
 import {createDocument} from "tripledoc";
-import {getDocument} from "./getDocument";
 import {checkOwnerAuthDocument} from "./checkOwnerAuthDocument";
+import {getDocument} from "./getDocument";
 
 export const checkAgroSolidDocument = async (webId) => {
   let webIdRoot = `${webId.split("/profile/card#me")[0]}`

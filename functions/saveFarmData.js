@@ -1,8 +1,8 @@
-import {getDocument} from "./getDocument";
 import {createDocument} from "tripledoc";
 import {rdf, rdfs} from "rdf-namespaces";
 import * as ags from "../owl";
 import {checkOwnerAuthDocument} from "./checkOwnerAuthDocument";
+import {getDocument} from "./getDocument";
 
 export const saveFarmData = async (webId, farmName, farmSurface, farmPlots) => {
   let farmIdentifier = farmName.toLowerCase().replace(" ", "");

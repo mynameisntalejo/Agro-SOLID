@@ -1,18 +1,18 @@
-import BaseLayout from "../components/baseLayout";
-import NavigationBar from "../components/navbar"
+import {useEffect, useState} from "react";
+import {useRouter} from "next/router";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Typography from "@material-ui/core/Typography";
-import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {saveFarmData} from "../functions/saveFarmData";
-import {useRouter} from "next/router";
+import BaseLayout from "../components/baseLayout";
 import LoaderSpinner from "../components/loaderSpinner";
 import ModalAlert from "../components/modalAlert";
+import NavigationBar from "../components/navbar"
+import {saveFarmData} from "../functions/saveFarmData";
 
 export default function Farm({session, setSession}) {
   const [farmName, setFarmName] = useState("");

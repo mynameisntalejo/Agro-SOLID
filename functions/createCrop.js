@@ -1,6 +1,6 @@
-import {getDocument} from "./getDocument";
 import {rdf} from "rdf-namespaces";
 import * as ags from "../owl";
+import {getDocument} from "./getDocument";
 
 export const createCrop = async (cropName) => {
   getDocument("https://agrosolid.inrupt.net/crops.ttl").then(

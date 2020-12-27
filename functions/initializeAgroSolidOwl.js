@@ -1,5 +1,5 @@
-import {foaf, owl, rdf, rdfs} from "rdf-namespaces";
 import {createDocument} from "tripledoc";
+import {foaf, owl, rdf, rdfs} from "rdf-namespaces";
 import {checkOwnerAuthDocument} from "./checkOwnerAuthDocument";
 
 export const initializeAgroSolidOwl = async (documentUri, webId) => {
