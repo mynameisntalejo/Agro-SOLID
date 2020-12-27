@@ -7,7 +7,7 @@ import Figure from "react-bootstrap/Figure";
 import Form from "react-bootstrap/Form"
 import auth from "solid-auth-client";
 import Alert from "react-bootstrap/Alert"
-import BaseLayout from "../components/base_layout";
+import BaseLayout from "../components/baseLayout";
 import {getSession} from "../functions/getSession";
 import {useRouter} from "next/router";
 import ModalAlert from "../components/modalAlert";

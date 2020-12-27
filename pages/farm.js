@@ -1,4 +1,4 @@
-import BaseLayout from "../components/base_layout";
+import BaseLayout from "../components/baseLayout";
 import NavigationBar from "../components/navbar"
 import {Button, Card, Container, Spinner} from "react-bootstrap";
 import Typography from "@material-ui/core/Typography";

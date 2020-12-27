@@ -1,4 +1,4 @@
-import BaseLayout from "../components/base_layout";
+import BaseLayout from "../components/baseLayout";
 import NavigationBar from "../components/navbar"
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
