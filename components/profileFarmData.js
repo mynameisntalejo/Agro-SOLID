@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {useRouter} from "next/router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
@@ -14,6 +15,7 @@ import DataTable from "react-data-table-component";
 export default function ProfileFarmData({session}) {
   const [loadingProfileFarms, setLoadingProfileFarms] = useState(true);
   const [farms, setFarms] = useState([]);
+  const router = useRouter();
 
   const events = [] // Array de eventos
   const eventsTableColumns = [
@@ -75,6 +77,18 @@ export default function ProfileFarmData({session}) {
       <Tab.Container id="farmList"
                      defaultActiveKey="#farm0"
       >
+        <Row className="mb-3">
+          <Col xs={2}>
+            <Button variant="white"
+                    block
+                    onClick={router.push("/farm")}
+            >
+              <Typography variant="button">
+                Agregar campo
+              </Typography>
+            </Button>
+          </Col>
+        </Row>
         <Row>
           <Col xs={3}>
             <ListGroup>
