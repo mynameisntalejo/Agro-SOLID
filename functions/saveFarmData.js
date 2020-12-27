@@ -11,10 +11,8 @@ export const saveFarmData = async (webId, farmName, farmSurface, farmPlots) => {
   let webIdRoot = `${webId.split("/profile/card#me")[0]}`;
   let agroSolidDocumentUri = `${webIdRoot}/agrosolid`;
 
-  console.log("getDocument(agroSolidDocumentUri)")
   const agroSolidDocument = await getDocument(agroSolidDocumentUri);
   if (agroSolidDocument) {
-    console.log("hay agroSolidDocument")
     for (const plot of farmPlots) {
       let plotName = plot.name.toLowerCase().replace(" ", "");
       let plotIdentifier = `plot${plotName}from${farmIdentifier}`;
@@ -23,9 +21,8 @@ export const saveFarmData = async (webId, farmName, farmSurface, farmPlots) => {
       plotSubject.setRef(rdf.type, ags.Plot);
       plotSubject.setString(ags.name, plot.name);
       plotSubject.setDecimal(ags.surface, parseFloat(plot.surface));
-      console.log("plotDocument.save()")
       let persistedPlotDocument = await plotDocument.save();
-      checkOwnerAuthDocument(persistedPlotDocument, webId);
+      await checkOwnerAuthDocument(persistedPlotDocument, webId);
       plotsDocumentsRef.push(persistedPlotDocument.asRef());
     }
 
@@ -40,14 +37,11 @@ export const saveFarmData = async (webId, farmName, farmSurface, farmPlots) => {
         farmSubject.setRef(ags.hasPlot, plotDocumentRef);
       }
     );
-    console.log("farmDocument.save()")
     let persistedFarmDocument = await farmDocument.save();
-    checkOwnerAuthDocument(persistedFarmDocument, webId);
+    await checkOwnerAuthDocument(persistedFarmDocument, webId);
 
     let agroSolidFarmSubject = agroSolidDocument.addSubject();
     agroSolidFarmSubject.setRef(rdfs.isDefinedBy, persistedFarmDocument.asRef());
-    console.log("agroSolidDocument.save()")
     await agroSolidDocument.save();
   }
-  console.log("finish")
 };

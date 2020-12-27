@@ -3,14 +3,11 @@ import * as ags from "../owl";
 import {getDocument} from "./getDocument";
 
 export const createCrop = async (cropName) => {
-  getDocument("https://agrosolid.inrupt.net/crops.ttl").then(
-    async (document) => {
-      if (document) {
-        const crop = document.addSubject({identifier: cropName});
-        crop.setRef(rdf.type, ags.Crop);
-        crop.setString(ags.name, cropName);
-        await document.save();
-      }
-    }
-  );
+  let cropsDocument = getDocument("https://agrosolid.inrupt.net/crops.ttl");
+  if (cropsDocument) {
+    const crop = document.addSubject({identifier: cropName});
+    crop.setRef(rdf.type, ags.Crop);
+    crop.setString(ags.name, cropName);
+    await document.save();
+  }
 };

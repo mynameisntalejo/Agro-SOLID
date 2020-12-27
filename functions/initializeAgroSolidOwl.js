@@ -78,5 +78,5 @@ export const initializeAgroSolidOwl = async (documentUri, webId) => {
   hasPlotProperty.setRef(rdfs.range, plotClass.asRef());
 
   const agroSolidOwlDocument = await document.save();
-  checkOwnerAuthDocument(agroSolidOwlDocument, webId);
+  await checkOwnerAuthDocument(agroSolidOwlDocument, webId);
 };
