@@ -1,15 +1,15 @@
 import BaseLayout from "../components/baseLayout";
 import NavigationBar from "../components/navbar"
-import {Button, Card, Container, Spinner} from "react-bootstrap";
-import Typography from "@material-ui/core/Typography";
+import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Typography from "@material-ui/core/Typography";
 import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Row from "react-bootstrap/Row";
 import {saveFarmData} from "../functions/saveFarmData";
-import Modal from "react-bootstrap/Modal";
-import Alert from "react-bootstrap/Alert";
 import {useRouter} from "next/router";
 import LoaderSpinner from "../components/loaderSpinner";
 import ModalAlert from "../components/modalAlert";
@@ -25,6 +25,14 @@ export default function Farm({session, setSession}) {
   const [savingFarm, setSavingFarm] = useState(false);
   const [successSaveFarm, setSuccessSaveFarm] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setRenderFarmPlots(true);
+  }, [farmPlots]);
+
+  useEffect(() => {
+    setDisabledSaveFarm(!(farmName && farmSurface && farmPlots.length));
+  }, [farmName, farmSurface, farmPlots]);
 
   const farmNameOnChange = (event) => {
     setFarmName(event.target.value);
@@ -53,14 +61,6 @@ export default function Farm({session, setSession}) {
     setRenderFarmPlots(false);
     setFarmPlots(farmPlots.filter((plot, idx) => idx !== index));
   };
-
-  useEffect(() => {
-    setRenderFarmPlots(true);
-  }, [farmPlots]);
-
-  useEffect(() => {
-    setDisabledSaveFarm(!(farmName && farmSurface && farmPlots.length));
-  }, [farmName, farmSurface, farmPlots]);
 
   const submitSaveFarm = async () => {
     setDisabledSaveFarm(true);
