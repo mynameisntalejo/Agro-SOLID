@@ -9,7 +9,6 @@ import ProfileFarmData from "../components/profileFarmData";
 import NavigationBar from "../components/navbar"
 
 export default function Profile({session, setSession}) {
-
   return (
     <BaseLayout pageTitle="Mis datos">
       <NavigationBar setSession={setSession}/>
