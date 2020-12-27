@@ -22,8 +22,10 @@
     "rdf-namespaces": "^1.9.2",
     "react": "16.14.0",
     "react-bootstrap": "^1.4.0",
+    "react-data-table-component": "^6.11.6",
     "react-dom": "16.14.0",
     "solid-auth-client": "^2.5.4",
+    "styled-components": "^5.2.1",
     "tripledoc": "^4.3.4"
   },
   "browserslist": [

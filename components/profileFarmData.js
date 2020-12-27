@@ -9,10 +9,43 @@ import Typography from "@material-ui/core/Typography";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import LoaderSpinner from "./loaderSpinner";
 import {getProfileFarmsData} from "../functions/getProfileFarmsData";
+import DataTable from "react-data-table-component";
 
 export default function ProfileFarmData({session}) {
   const [loadingProfileFarms, setLoadingProfileFarms] = useState(true);
   const [farms, setFarms] = useState([]);
+
+  const events = [] // Array de eventos
+  const eventsTableColumns = [
+    {
+      name: <Typography variant="overline" className="font-weight-bold">Tipo</Typography>,
+      selector: "type",
+      sortable: true,
+      compact: true,
+      wrap: true,
+    },
+    {
+      name: <Typography variant="overline" className="font-weight-bold">Cultivo</Typography>,
+      selector: "crop",
+      sortable: true,
+      compact: true,
+      wrap: true,
+    },
+    {
+      name: <Typography variant="overline" className="font-weight-bold">Cantidad</Typography>,
+      selector: "quantity",
+      sortable: true,
+      compact: true,
+      wrap: true,
+    },
+    {
+      name: <Typography variant="overline" className="font-weight-bold">Fecha</Typography>,
+      selector: "timestamp",
+      sortable: true,
+      compact: true,
+      wrap: true,
+    },
+  ];
 
   useEffect(() => {
     setLoadingProfileFarms(true);
@@ -222,6 +255,29 @@ export default function ProfileFarmData({session}) {
                                                       >
                                                         Eventos
                                                       </Typography>
+                                                      <DataTable columns={eventsTableColumns}
+                                                                 data={events}
+                                                                 noHeader={true}
+                                                                 highlightOnHover={true}
+                                                                 noDataComponent={
+                                                                   <Typography gutterBottom
+                                                                               variant="body1"
+                                                                   >
+                                                                     No hay eventos que mostrar
+                                                                   </Typography>
+                                                                 }
+                                                                 pagination={true}
+                                                                 paginationPerPage={4}
+                                                                 paginationRowsPerPageOptions={[4, 8, 12, 16, 20]}
+                                                                 paginationComponentOptions={
+                                                                   {
+                                                                     rowsPerPageText: "Registros por página",
+                                                                     rangeSeparatorText: "de",
+                                                                     selectAllRowsItem: true,
+                                                                     selectAllRowsItemText: "Todos"
+                                                                   }
+                                                                 }
+                                                      />
                                                     </Col>
                                                   </Row>
                                                 </Card.Body>
