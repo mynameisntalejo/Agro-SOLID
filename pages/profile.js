@@ -7,9 +7,6 @@ import BaseLayout from "../components/baseLayout";
 import ProfileDataForm from "../components/profileDataForm";
 import ProfileFarmData from "../components/profileFarmData";
 import NavigationBar from "../components/navbar"
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 
 export default function Profile({session, setSession}) {
   return (
