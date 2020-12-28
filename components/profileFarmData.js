@@ -8,16 +8,15 @@ import Tab from "react-bootstrap/Tab";
 import ListGroup from "react-bootstrap/ListGroup";
 import Typography from "@material-ui/core/Typography";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import DataTable from "react-data-table-component";
 import LoaderSpinner from "./loaderSpinner";
 import {getProfileFarmsData} from "../functions/getProfileFarmsData";
-import DataTable from "react-data-table-component";
 
 export default function ProfileFarmData({session}) {
   const [loadingProfileFarms, setLoadingProfileFarms] = useState(true);
   const [farms, setFarms] = useState([]);
   const router = useRouter();
 
-  const events = [] // Array de eventos
   const eventsTableColumns = [
     {
       name: <Typography variant="overline" className="font-weight-bold">Tipo</Typography>,
@@ -81,7 +80,7 @@ export default function ProfileFarmData({session}) {
           <Col xs={2}>
             <Button variant="white"
                     block
-                    onClick={router.push("/farm")}
+                    onClick={() => router.push("/farm")}
             >
               <Typography variant="button">
                 Agregar campo
@@ -254,7 +253,7 @@ export default function ProfileFarmData({session}) {
                                                     <Col>
                                                       <Button variant="white"
                                                               block
-                                                              onClick={() => console.log("nuevo evento")}
+                                                              onClick={() => router.push(`event${farm.documentUri}${plot.documentUri}`)}
                                                       >
                                                         <Typography variant="button">
                                                           Agregar evento
@@ -270,7 +269,7 @@ export default function ProfileFarmData({session}) {
                                                         Eventos
                                                       </Typography>
                                                       <DataTable columns={eventsTableColumns}
-                                                                 data={events}
+                                                                 data={plot.events}
                                                                  noHeader={true}
                                                                  highlightOnHover={true}
                                                                  noDataComponent={
@@ -280,6 +279,7 @@ export default function ProfileFarmData({session}) {
                                                                      No hay eventos que mostrar
                                                                    </Typography>
                                                                  }
+                                                                 defaultSortField="timestamp"
                                                                  pagination={true}
                                                                  paginationPerPage={4}
                                                                  paginationRowsPerPageOptions={[4, 8, 12, 16, 20]}

@@ -1,4 +1,4 @@
-import {rdfs, rdf} from "rdf-namespaces";
+import {rdf, rdfs} from "rdf-namespaces";
 import * as ags from "../owl";
 import {getDocument} from "./getDocument";
 import {getProfileData} from "./getProfileData";
@@ -16,7 +16,7 @@ export const getProfileFarmsData = async (webId) => {
       let farmName = farm.getString(ags.name);
       let farmSurface = farm.getDecimal(ags.surface);
       let farmData = {
-        documentUri: farmDocumentUri,
+        documentUri: farmDocumentUri.split(webIdRoot)[1],
         name: farmName,
         surface: farmSurface,
         owner: {
@@ -31,12 +31,27 @@ export const getProfileFarmsData = async (webId) => {
         for (const plot of plotDocument.findSubjects(rdf.type, ags.Plot)) {
           let plotName = plot.getString(ags.name);
           let plotSurface = plot.getDecimal(ags.surface);
-          farmData.plots.push(
-            {
-              name: plotName,
-              surface: plotSurface
+          let plotData = {
+            documentUri: plotDocumentUri.split(webIdRoot)[1],
+            name: plotName,
+            surface: plotSurface,
+            events : []
+          }
+          for (const eventRef of plot.getAllRefs(ags.hasEvent)) {
+            let event = plotDocument.getSubject(eventRef);
+            let eventType = event.getRef(rdf.type).split("#")[1].replace("Sowing", "Siembra").replace("Harvesting", "Cosecha");
+            let eventCrop = event.getRef(ags.hasCrop).split("#")[1];
+            let eventQuantity = event.getInteger(ags.quantity);
+            let eventTimestamp = (new Date(event.getInteger(ags.timestamp))).toLocaleString();
+            let eventData = {
+              type: eventType,
+              crop: eventCrop,
+              quantity: eventQuantity,
+              timestamp: eventTimestamp
             }
-          );
+            plotData.events.push(eventData);
+          }
+          farmData.plots.push(plotData);
         }
       }
       farms.push(farmData);
