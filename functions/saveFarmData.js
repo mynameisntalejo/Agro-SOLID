@@ -34,7 +34,7 @@ export const saveFarmData = async (webId, farmName, farmSurface, farmPlots) => {
     farmSubject.setRef(ags.hasOwner, webId);
     plotsDocumentsRef.forEach(
       (plotDocumentRef) => {
-        farmSubject.setRef(ags.hasPlot, plotDocumentRef);
+        farmSubject.addRef(ags.hasPlot, plotDocumentRef);
       }
     );
     let persistedFarmDocument = await farmDocument.save();
