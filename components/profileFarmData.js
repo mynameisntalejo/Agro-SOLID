@@ -196,7 +196,7 @@ export default function ProfileFarmData({session}) {
                                                     <Col>
                                                       <Button variant="black"
                                                               block
-                                                              onClick={() => console.log("editar")}
+                                                              onClick={() => router.push(`farm${farm.documentUri}`)}
                                                       >
                                                         <Typography variant="button">
                                                           Editar campo

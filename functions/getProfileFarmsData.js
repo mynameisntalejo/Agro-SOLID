@@ -14,7 +14,7 @@ export const getProfileFarmsData = async (webId) => {
     for (const farm of farmDocument.findSubjects(rdf.type, ags.Farm)) {
       let [farmOwnerWebId, farmOwnerFirstName, farmOwnerLastName] = await getProfileData(farm.getRef(ags.hasOwner));
       let farmName = farm.getString(ags.name);
-      let farmSurface = farm.getDecimal(ags.surface);
+      let farmSurface = farm.getInteger(ags.surface);
       let farmData = {
         documentUri: farmDocumentUri.split(webIdRoot)[1],
         name: farmName,
@@ -30,7 +30,7 @@ export const getProfileFarmsData = async (webId) => {
         let plotDocument = await getDocument(plotDocumentUri);
         for (const plot of plotDocument.findSubjects(rdf.type, ags.Plot)) {
           let plotName = plot.getString(ags.name);
-          let plotSurface = plot.getDecimal(ags.surface);
+          let plotSurface = plot.getInteger(ags.surface);
           let plotData = {
             documentUri: plotDocumentUri.split(webIdRoot)[1],
             name: plotName,
@@ -39,7 +39,7 @@ export const getProfileFarmsData = async (webId) => {
           }
           for (const eventRef of plot.getAllRefs(ags.hasEvent)) {
             let event = plotDocument.getSubject(eventRef);
-            let eventType = event.getRef(rdf.type).split("#")[1].replace("Sowing", "Siembra").replace("Harvesting", "Cosecha");
+            let eventType = event.getRef(rdf.type).split("#")[1].replaceAll("Sowing", "Siembra").replaceAll("Harvesting", "Cosecha");
             let eventCrop = event.getRef(ags.hasCrop).split("#")[1];
             let eventQuantity = event.getInteger(ags.quantity);
             let eventTimestamp = (new Date(event.getInteger(ags.timestamp))).toLocaleString();
