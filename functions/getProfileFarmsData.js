@@ -35,7 +35,7 @@ export const getProfileFarmsData = async (webId) => {
             documentUri: plotDocumentUri.split(webIdRoot)[1],
             name: plotName,
             surface: plotSurface,
-            events : []
+            events: []
           }
           for (const eventRef of plot.getAllRefs(ags.hasEvent)) {
             let event = plotDocument.getSubject(eventRef);
