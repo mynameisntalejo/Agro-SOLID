@@ -129,7 +129,7 @@ export default function Login({session, setSession}) {
         </Col>
       </Row>
       <ModalAlert show={!!session}
-                  onHide={() => router.push("/")}
+                  onConfirm={() => router.push("/")}
                   variant="success"
                   title="Se encuentra autenticado"
                   msg={`Con el siguiente WebID ${session ? session.webId : null}`}

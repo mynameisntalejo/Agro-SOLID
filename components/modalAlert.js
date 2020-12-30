@@ -3,10 +3,10 @@ import Alert from "react-bootstrap/Alert";
 import Modal from "react-bootstrap/Modal";
 import Typography from "@material-ui/core/Typography";
 
-export default function ModalAlert({show, onHide, variant, title, msg}) {
+export default function ModalAlert({show, onConfirm, onCancel, variant, title, msg}) {
   return (
     <Modal show={show}
-           onHide={onHide}
+           onHide={() => onCancel ? onCancel() : onConfirm()}
            backdrop="static"
            keyboard={false}
     >
@@ -29,12 +29,23 @@ export default function ModalAlert({show, onHide, variant, title, msg}) {
       <Modal.Footer>
         <Button variant="primary"
                 block
-                onClick={onHide}
+                onClick={onConfirm}
         >
           <Typography variant="button">
             Aceptar
           </Typography>
         </Button>
+        {
+          onCancel &&
+          <Button variant="black"
+                  block
+                  onClick={onCancel}
+          >
+            <Typography variant="button">
+              Cancelar
+            </Typography>
+          </Button>
+        }
       </Modal.Footer>
     </Modal>
   )

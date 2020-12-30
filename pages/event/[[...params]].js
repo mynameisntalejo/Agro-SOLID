@@ -317,7 +317,7 @@ export default function Event({session, setSession}) {
         </Card>
       </Container>
       <ModalAlert show={successSaveEvent}
-                  onHide={() => router.push("/profile")}
+                  onConfirm={() => router.push("/profile")}
                   variant="success"
                   title="¡Éxito!"
                   msg="Se dió de alta un nuevo evento correctamente"

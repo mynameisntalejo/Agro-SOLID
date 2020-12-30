@@ -321,7 +321,7 @@ export default function Farm({session, setSession}) {
         </Card>
       </Container>
       <ModalAlert show={successSaveFarm}
-                  onHide={() => router.push("/profile")}
+                  onConfirm={() => router.push("/profile")}
                   variant="success"
                   title="¡Éxito!"
                   msg={`Se ${farmDocumentUri ? "editó el" : "dió de alta un nuevo"} campo correctamente`}
