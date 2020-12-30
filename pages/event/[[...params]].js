@@ -47,7 +47,7 @@ export default function Event({session, setSession}) {
   useEffect(() => {
     setLoadingEventForm(true);
     const fetchFarmPlotData = async () => {
-      let webIdRoot = `${session.webId.split("/profile/card#me")[0]}`
+      let webIdRoot = `${session.webId.split("/profile/card#me")[0]}`;
       let farmDocument = await getDocument(`${webIdRoot}/${farmDocumentUri}`);
       for (const farm of farmDocument.findSubjects(rdf.type, ags.Farm)) {
         setFarmName(farm.getString(ags.name));

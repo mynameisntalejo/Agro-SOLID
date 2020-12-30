@@ -5,7 +5,7 @@ import {getProfileData} from "./getProfileData";
 
 export const getProfileFarmsData = async (webId) => {
   let farms = [];
-  let webIdRoot = `${webId.split("/profile/card#me")[0]}`
+  let webIdRoot = `${webId.split("/profile/card#me")[0]}`;
   let agroSolidDocumentUri = `${webIdRoot}/agrosolid`;
   let agroSolidDocument = await getDocument(agroSolidDocumentUri);
   for (const triple of agroSolidDocument.findSubjects(rdfs.isDefinedBy, "")) {

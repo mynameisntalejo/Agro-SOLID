@@ -4,7 +4,7 @@ import {getDocument} from "./getDocument";
 
 export const getFarmData = async (webId, farmUri) => {
   let farmData;
-  let webIdRoot = `${webId.split("/profile/card#me")[0]}`
+  let webIdRoot = `${webId.split("/profile/card#me")[0]}`;
   let farmDocumentUri = `${webIdRoot}/${farmUri}`;
   let farmDocument = await getDocument(farmDocumentUri);
   for (const farm of farmDocument.findSubjects(rdf.type, ags.Farm)) {
