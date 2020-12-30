@@ -1,9 +1,18 @@
+import {useState} from "react";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Modal from "react-bootstrap/Modal";
 import Typography from "@material-ui/core/Typography";
+import LoaderSpinner from "./loaderSpinner";
 
 export default function ModalAlert({show, onConfirm, onCancel, variant, title, msg}) {
+  const [submitting, setSubmitting] = useState(false);
+
+  const onSubmit = () => {
+    setSubmitting(true);
+    onConfirm();
+  }
+
   return (
     <Modal show={show}
            onHide={() => onCancel ? onCancel() : onConfirm()}
@@ -29,17 +38,29 @@ export default function ModalAlert({show, onConfirm, onCancel, variant, title, m
       <Modal.Footer>
         <Button variant="primary"
                 block
-                onClick={onConfirm}
+                onClick={onSubmit}
+                disabled={submitting}
         >
-          <Typography variant="button">
-            Aceptar
-          </Typography>
+          {
+            !submitting &&
+            <Typography variant="button">
+              Aceptar
+            </Typography>
+          }
+          {
+            submitting &&
+            <LoaderSpinner variant="light"
+                           size="sm"
+                           srmsg="Procesando"
+            />
+          }
         </Button>
         {
           onCancel &&
           <Button variant="black"
                   block
                   onClick={onCancel}
+                  disabled={submitting}
           >
             <Typography variant="button">
               Cancelar

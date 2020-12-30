@@ -10,12 +10,31 @@ import Typography from "@material-ui/core/Typography";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import DataTable from "react-data-table-component";
 import LoaderSpinner from "./loaderSpinner";
+import ModalAlert from "./modalAlert";
 import {getProfileFarmsData} from "../functions/getProfileFarmsData";
+import {deleteFarmData} from "../functions/deleteFarmData";
 
 export default function ProfileFarmData({session}) {
   const [loadingProfileFarms, setLoadingProfileFarms] = useState(true);
   const [farms, setFarms] = useState([]);
+  const [confirmDeleteFarm, setConfirmDeleteFarm] = useState(false);
+  const [farmUriToDelete, setFarmUriToDelete] = useState("");
   const router = useRouter();
+
+  const deleteFarm = (farmUri) => {
+    setFarmUriToDelete(farmUri);
+    setConfirmDeleteFarm(true);
+  }
+
+  const onConfirmDeleteFarm = async () => {
+    await deleteFarmData(session.webId, farmUriToDelete.replaceAll("/", ""));
+    router.reload();
+  }
+
+  const onCancelDeleteFarm = () => {
+    setFarmUriToDelete("");
+    setConfirmDeleteFarm(false);
+  }
 
   const eventsTableColumns = [
     {
@@ -208,7 +227,7 @@ export default function ProfileFarmData({session}) {
                                                     <Col>
                                                       <Button variant="danger"
                                                               block
-                                                              onClick={() => console.log("eliminar")}
+                                                              onClick={() => deleteFarm(farm.documentUri)}
                                                       >
                                                         <Typography variant="button">
                                                           Eliminar campo
@@ -315,6 +334,13 @@ export default function ProfileFarmData({session}) {
             </Tab.Content>
           </Col>
         </Row>
+        <ModalAlert show={confirmDeleteFarm}
+                    onConfirm={onConfirmDeleteFarm}
+                    onCancel={onCancelDeleteFarm}
+                    variant="warning"
+                    title="¡Atención!"
+                    msg="Se eliminará definitivamente la información del campo"
+        />
       </Tab.Container>
     )
   }
