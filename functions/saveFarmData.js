@@ -18,7 +18,7 @@ export const saveFarmData = async (webId, farmName, farmSurface, farmPlots, farm
       let plotDocument, plotSubject;
       if (plot.documentUri) {
         plotDocument = await getDocument(`${webIdRoot}${plot.documentUri}`);
-        for (const plotSubjectDocument of plotDocument.findSubjects(rdf.type, ags.Plot)) {
+        for (const plotSubjectDocument of plotDocument ? plotDocument.findSubjects(rdf.type, ags.Plot) : []) {
           plotSubject = plotSubjectDocument;
         }
       } else {
@@ -45,7 +45,7 @@ export const saveFarmData = async (webId, farmName, farmSurface, farmPlots, farm
     let farmDocument, farmSubject;
     if (farmUri) {
       farmDocument = await getDocument(`${webIdRoot}/${farmUri}`);
-      for (const farmSubjectDocument of farmDocument.findSubjects(rdf.type, ags.Farm)) {
+      for (const farmSubjectDocument of farmDocument ? farmDocument.findSubjects(rdf.type, ags.Farm) : []) {
         farmSubject = farmSubjectDocument;
       }
     } else {

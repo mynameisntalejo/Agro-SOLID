@@ -49,11 +49,11 @@ export default function Event({session, setSession}) {
     const fetchFarmPlotData = async () => {
       let webIdRoot = `${session.webId.split("/profile/card#me")[0]}`;
       let farmDocument = await getDocument(`${webIdRoot}/${farmDocumentUri}`);
-      for (const farm of farmDocument.findSubjects(rdf.type, ags.Farm)) {
+      for (const farm of farmDocument ? farmDocument.findSubjects(rdf.type, ags.Farm) : []) {
         setFarmName(farm.getString(ags.name));
       }
       let plotDocument = await getDocument(`${webIdRoot}/${plotDocumentUri}`);
-      for (const plot of plotDocument.findSubjects(rdf.type, ags.Plot)) {
+      for (const plot of plotDocument ? plotDocument.findSubjects(rdf.type, ags.Plot) : []) {
         setPlotName(plot.getString(ags.name));
       }
       setLoadingEventForm(false);

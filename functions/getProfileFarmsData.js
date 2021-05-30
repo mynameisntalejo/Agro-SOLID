@@ -8,10 +8,10 @@ export const getProfileFarmsData = async (webId) => {
   let webIdRoot = `${webId.split("/profile/card#me")[0]}`;
   let agroSolidDocumentUri = `${webIdRoot}/agrosolid`;
   let agroSolidDocument = await getDocument(agroSolidDocumentUri);
-  for (const triple of agroSolidDocument.findSubjects(rdfs.isDefinedBy, "")) {
+  for (const triple of agroSolidDocument ? agroSolidDocument.findSubjects(rdfs.isDefinedBy, "") : []) {
     let farmDocumentUri = triple.getRef(rdfs.isDefinedBy);
     let farmDocument = await getDocument(farmDocumentUri);
-    for (const farm of farmDocument.findSubjects(rdf.type, ags.Farm)) {
+    for (const farm of farmDocument ? farmDocument.findSubjects(rdf.type, ags.Farm) : []) {
       let [farmOwnerWebId, farmOwnerFirstName, farmOwnerLastName] = await getProfileData(farm.getRef(ags.hasOwner));
       let farmName = farm.getString(ags.name);
       let farmSurface = farm.getInteger(ags.surface);
@@ -28,7 +28,7 @@ export const getProfileFarmsData = async (webId) => {
       }
       for (const plotDocumentUri of farm.getAllRefs(ags.hasPlot)) {
         let plotDocument = await getDocument(plotDocumentUri);
-        for (const plot of plotDocument.findSubjects(rdf.type, ags.Plot)) {
+        for (const plot of plotDocument ? plotDocument.findSubjects(rdf.type, ags.Plot) : []) {
           let plotName = plot.getString(ags.name);
           let plotSurface = plot.getInteger(ags.surface);
           let plotData = {

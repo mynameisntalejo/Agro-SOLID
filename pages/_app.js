@@ -10,6 +10,7 @@ import "../components/faLibrary";
 import LoaderSpinner from "../components/loaderSpinner";
 import {checkAgroSolidDocument} from "../functions/checkAgroSolidDocument";
 import {getSession} from "../functions/getSession";
+import {getDocument} from "../functions/getDocument";
 
 function MyApp({Component, pageProps}) {
   const [session, setSession] = useState(false);

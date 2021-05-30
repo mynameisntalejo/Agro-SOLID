@@ -223,7 +223,7 @@ export default function ProfileFarmData({session}) {
                                                       </Button>
                                                     </Col>
                                                   </Row>
-                                                  <Row>
+                                                  <Row className="mb-3">
                                                     <Col>
                                                       <Button variant="danger"
                                                               block
@@ -231,6 +231,18 @@ export default function ProfileFarmData({session}) {
                                                       >
                                                         <Typography variant="button">
                                                           Eliminar campo
+                                                        </Typography>
+                                                      </Button>
+                                                    </Col>
+                                                  </Row>
+                                                  <Row className="mb-3">
+                                                    <Col>
+                                                      <Button variant="secondary"
+                                                              block
+                                                              onClick={() => router.push(`privacy${farm.documentUri}`)}
+                                                      >
+                                                        <Typography variant="button">
+                                                          Editar privacidad
                                                         </Typography>
                                                       </Button>
                                                     </Col>

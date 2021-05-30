@@ -9,7 +9,7 @@ export const deleteFarmData = async (webId, farmUri) => {
   let farmDocumentUri = `${webIdRoot}/${farmUri}`;
   let farmDocument = await getDocument(farmDocumentUri);
   let farmDocumentRef = farmDocument.asRef();
-  for (const farm of farmDocument.findSubjects(rdf.type, ags.Farm)) {
+  for (const farm of farmDocument ? farmDocument.findSubjects(rdf.type, ags.Farm) : []) {
     for (const plotDocumentUri of farm.getAllRefs(ags.hasPlot)) {
       let plotDocument = await getDocument(plotDocumentUri);
       await SolidAuthClient.fetch(plotDocument.asRef(), {
@@ -21,7 +21,7 @@ export const deleteFarmData = async (webId, farmUri) => {
     method: "DELETE"
   });
   const agroSolidDocument = await getDocument(agroSolidDocumentUri);
-  for (const farm of agroSolidDocument.findSubjects(rdfs.isDefinedBy, farmDocumentRef)) {
+  for (const farm of agroSolidDocument ? agroSolidDocument.findSubjects(rdfs.isDefinedBy, farmDocumentRef) : []) {
     agroSolidDocument.removeSubject(farm.asRef());
   }
   await agroSolidDocument.save();

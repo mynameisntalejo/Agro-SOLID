@@ -5,7 +5,7 @@ export const saveUser = async (webId) => {
   let usersDocument = await getDocument("https://agrosolid.inrupt.net/usersWebId.ttl");
   if (usersDocument) {
     let exists = false;
-    for (const user of usersDocument.findSubjects(rdfs.isDefinedBy, webId)) {
+    for (const user of usersDocument ? usersDocument.findSubjects(rdfs.isDefinedBy, webId) : []) {
       exists = true;
     }
     if (!exists) {

@@ -6,7 +6,7 @@ export const getCrops = async () => {
   let crops = [];
   let cropsDocument = await getDocument("https://agrosolid.inrupt.net/crops.ttl");
   if (cropsDocument) {
-    for (const crop of cropsDocument.findSubjects(rdf.type, ags.Crop)) {
+    for (const crop of cropsDocument ? cropsDocument.findSubjects(rdf.type, ags.Crop) : []) {
       crops.push({
         documentUri: crop.asRef(),
         name: crop.getString(ags.name)

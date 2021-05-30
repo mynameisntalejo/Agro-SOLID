@@ -21,7 +21,7 @@ export const saveEventData = async (webId, plotUri, eventType, cropRef, eventQua
     eventSubject.setInteger(ags.timestamp, eventDatetime.getTime());
     eventSubject.setRef(ags.hasCrop, cropRef);
 
-    for (const plot of plotDocument.findSubjects(rdf.type, ags.Plot)) {
+    for (const plot of plotDocument ? plotDocument.findSubjects(rdf.type, ags.Plot) : []) {
       plot.addRef(ags.hasEvent, eventSubject.asRef());
     }
     await plotDocument.save();

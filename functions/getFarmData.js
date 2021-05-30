@@ -7,7 +7,7 @@ export const getFarmData = async (webId, farmUri) => {
   let webIdRoot = `${webId.split("/profile/card#me")[0]}`;
   let farmDocumentUri = `${webIdRoot}/${farmUri}`;
   let farmDocument = await getDocument(farmDocumentUri);
-  for (const farm of farmDocument.findSubjects(rdf.type, ags.Farm)) {
+  for (const farm of farmDocument ? farmDocument.findSubjects(rdf.type, ags.Farm) : []) {
     let farmName = farm.getString(ags.name);
     let farmSurface = farm.getInteger(ags.surface);
     farmData = {
@@ -18,7 +18,7 @@ export const getFarmData = async (webId, farmUri) => {
     }
     for (const plotDocumentUri of farm.getAllRefs(ags.hasPlot)) {
       let plotDocument = await getDocument(plotDocumentUri);
-      for (const plot of plotDocument.findSubjects(rdf.type, ags.Plot)) {
+      for (const plot of plotDocument ? plotDocument.findSubjects(rdf.type, ags.Plot) : []) {
         let plotName = plot.getString(ags.name);
         let plotSurface = plot.getInteger(ags.surface);
         let plotData = {
