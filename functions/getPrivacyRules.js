@@ -40,6 +40,5 @@ export const getPrivacyRules = async (webId, farm, farmPlots) => {
       privacyRules[plot.documentUri] = plotPrivacyRules;
     }
   }
-  console.log(privacyRules);
   return privacyRules;
 };

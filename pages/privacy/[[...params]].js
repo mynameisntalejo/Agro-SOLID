@@ -57,6 +57,18 @@ export default function Privacy({session, setSession}) {
   }, [farm, farmPlots]);
 
   useEffect(() => {
+    let all = true;
+    Object.keys(farmPrivacyRules).forEach(
+      (key) => {
+        if (!farmPrivacyRules[key].includes("Todos")) {
+          all = false;
+        }
+      }
+    );
+    setFarmAllAccess(all);
+  }, [farmPrivacyRules]);
+
+  useEffect(() => {
     setDisabledSaveFarmPrivacy(!farmAllAccess && !Object.keys(farmPrivacyRules).length);
   }, [farmAllAccess, farmPrivacyRules]);
 
@@ -100,7 +112,13 @@ export default function Privacy({session, setSession}) {
         <Card>
           <Card.Header>
             <Typography variant="button">
-              Editar privacidad del campo {farm.name}
+              Editar privacidad del campo {
+              !farm.name &&
+              <LoaderSpinner variant="dark"
+                             size="sm"
+                             srmsg="Cargando"
+              />
+            }{farm.name && farm.name}
             </Typography>
           </Card.Header>
           <Card.Body>

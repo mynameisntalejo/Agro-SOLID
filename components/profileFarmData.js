@@ -8,11 +8,11 @@ import Tab from "react-bootstrap/Tab";
 import ListGroup from "react-bootstrap/ListGroup";
 import Typography from "@material-ui/core/Typography";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import DataTable from "react-data-table-component";
 import LoaderSpinner from "./loaderSpinner";
 import ModalAlert from "./modalAlert";
-import {getProfileFarmsData} from "../functions/getProfileFarmsData";
 import {deleteFarmData} from "../functions/deleteFarmData";
+import {getProfileFarmsData} from "../functions/getProfileFarmsData";
+import EventDataTable from "./eventDataTable";
 
 export default function ProfileFarmData({session}) {
   const [loadingProfileFarms, setLoadingProfileFarms] = useState(true);
@@ -35,37 +35,6 @@ export default function ProfileFarmData({session}) {
     setFarmUriToDelete("");
     setConfirmDeleteFarm(false);
   }
-
-  const eventsTableColumns = [
-    {
-      name: <Typography variant="overline" className="font-weight-bold">Tipo</Typography>,
-      selector: "type",
-      sortable: true,
-      compact: true,
-      wrap: true,
-    },
-    {
-      name: <Typography variant="overline" className="font-weight-bold">Cultivo</Typography>,
-      selector: "crop",
-      sortable: true,
-      compact: true,
-      wrap: true,
-    },
-    {
-      name: <Typography variant="overline" className="font-weight-bold">Cantidad</Typography>,
-      selector: "quantity",
-      sortable: true,
-      compact: true,
-      wrap: true,
-    },
-    {
-      name: <Typography variant="overline" className="font-weight-bold">Fecha</Typography>,
-      selector: "timestamp",
-      sortable: true,
-      compact: true,
-      wrap: true,
-    },
-  ];
 
   useEffect(() => {
     setLoadingProfileFarms(true);
@@ -299,30 +268,7 @@ export default function ProfileFarmData({session}) {
                                                       >
                                                         Eventos
                                                       </Typography>
-                                                      <DataTable columns={eventsTableColumns}
-                                                                 data={plot.events}
-                                                                 noHeader={true}
-                                                                 highlightOnHover={true}
-                                                                 noDataComponent={
-                                                                   <Typography gutterBottom
-                                                                               variant="body1"
-                                                                   >
-                                                                     No hay eventos que mostrar
-                                                                   </Typography>
-                                                                 }
-                                                                 defaultSortField="timestamp"
-                                                                 pagination={true}
-                                                                 paginationPerPage={4}
-                                                                 paginationRowsPerPageOptions={[4, 8, 12, 16, 20]}
-                                                                 paginationComponentOptions={
-                                                                   {
-                                                                     rowsPerPageText: "Registros por página",
-                                                                     rangeSeparatorText: "de",
-                                                                     selectAllRowsItem: true,
-                                                                     selectAllRowsItemText: "Todos"
-                                                                   }
-                                                                 }
-                                                      />
+                                                      <EventDataTable data={plot.events}/>
                                                     </Col>
                                                   </Row>
                                                 </Card.Body>

@@ -8,4 +8,5 @@ export const getDocument = async (uri) => {
       return false;
     }
   }
+  return false;
 };
